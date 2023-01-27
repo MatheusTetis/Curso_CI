@@ -26,11 +26,12 @@ jobs:
       with:
         go-version: ${{ matrix.go_version }}
 
-      if: contains(${{ matrix.os }}, 'macOS')
     - name: Build-DB macOS
+      if: contains(${{ matrix.os }}, 'macOS')
       run: docker compose build
-      if: ! contains(${{ matrix.os }}, 'macOS')
+      
     - name: Build-DB ${{ matrix.os }}
+      if: ! contains(${{ matrix.os }}, 'macOS')
       run: docker-compose build
       
     - name: Create-DB
