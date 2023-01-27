@@ -30,10 +30,6 @@ jobs:
       if: contains(${{ matrix.os }}, 'macOS')
       run: docker compose build
       
-    - name: Build-DB ${{ matrix.os }}
-      if: ! contains(${{ matrix.os }}, 'macOS')
-      run: docker-compose build
-      
     - name: Create-DB
       run: docker-compose up -d
 
